@@ -7,7 +7,6 @@
     @apply bg-cyber-bg text-slate-300 antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
-
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
@@ -17,23 +16,18 @@
   .glass-panel {
     @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl;
   }
-
   .cyber-input {
     @apply bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyber-accent/50 focus:bg-white/[0.05] transition-all placeholder:text-slate-600;
   }
-
   .neon-text {
     text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.2);
   }
-
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
   }
-
   .custom-scrollbar::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
-
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply bg-white/10 rounded-full hover:bg-cyber-accent/30 transition-colors;
   }
@@ -43,11 +37,164 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
-
 .animate-bounce-slow {
   animation: bounce-slow 4s ease-in-out infinite;
 }
 
 [lang="hi"] {
   font-family: "Noto Sans Devanagari", sans-serif;
+}
+
+/* ─── DARK (default) ─────────────────────────────────────── */
+.dark body {
+  background-color: #050505;
+  color: #cbd5e1;
+}
+
+/* ─── LIGHT ──────────────────────────────────────────────── */
+.light body {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+}
+
+.light #root > div {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+}
+
+/* Navbar */
+.light nav {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  backdrop-filter: blur(20px);
+}
+
+/* All text */
+.light p,
+.light span,
+.light a,
+.light li,
+.light label {
+  color: #334155;
+}
+
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light h5,
+.light h6 {
+  color: #0f172a;
+}
+
+/* Glass panels */
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Inputs */
+.light .cyber-input {
+  background: rgba(0, 0, 0, 0.03) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  color: #1e293b !important;
+}
+
+.light .cyber-input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Footer */
+.light footer {
+  background-color: #e2e8f0 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Slate overrides for light mode */
+.light .text-slate-300 { color: #475569 !important; }
+.light .text-slate-400 { color: #475569 !important; }
+.light .text-slate-500 { color: #64748b !important; }
+.light .text-slate-700 { color: #334155 !important; }
+.light .text-white     { color: #0f172a !important; }
+
+/* Background overrides */
+.light .bg-white\/\[0\.03\]  { background-color: rgba(255,255,255,0.7) !important; }
+.light .bg-white\/5          { background-color: rgba(0,0,0,0.04) !important; }
+.light .border-white\/5      { border-color: rgba(0,0,0,0.07) !important; }
+.light .border-white\/10     { border-color: rgba(0,0,0,0.1) !important; }
+
+/* Hover states */
+.light button:hover,
+.light a:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* ─── HIGH CONTRAST ──────────────────────────────────────── */
+.contrast body {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+.contrast #root > div {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+.contrast nav {
+  background: #000000 !important;
+  border-color: #ffff00 !important;
+}
+
+.contrast .glass-panel {
+  background: #000000 !important;
+  border-color: #ffff00 !important;
+  border-width: 2px !important;
+}
+
+.contrast footer {
+  background-color: #000000 !important;
+  border-color: #ffff00 !important;
+}
+
+.contrast p,
+.contrast span,
+.contrast a,
+.contrast li,
+.contrast label,
+.contrast h1,
+.contrast h2,
+.contrast h3,
+.contrast h4,
+.contrast h5,
+.contrast h6 {
+  color: #ffff00 !important;
+}
+
+.contrast .text-slate-300,
+.contrast .text-slate-400,
+.contrast .text-slate-500,
+.contrast .text-slate-700,
+.contrast .text-white {
+  color: #ffff00 !important;
+}
+
+.contrast .cyber-input {
+  background: #000 !important;
+  border-color: #ffff00 !important;
+  color: #ffff00 !important;
+}
+
+.contrast .cyber-input::placeholder {
+  color: #aaaa00 !important;
+}
+
+.contrast button,
+.contrast a {
+  color: #ffff00;
+}
+
+.contrast .border-white\/5,
+.contrast .border-white\/10 {
+  border-color: #ffff00 !important;
 }

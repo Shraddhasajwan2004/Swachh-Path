@@ -17,7 +17,8 @@ import {
   Type,
   ChevronDown,
   Shield,
-  Home
+  Home,
+  Contrast
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -38,8 +39,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const filteredNav = navItems.filter(item => !item.adminOnly || role === 'admin');
 
+  // Theme cycle: dark → light → contrast → dark
+  const cycleTheme = () => {
+    if (theme === 'dark') setTheme('light');
+    else if (theme === 'light') setTheme('contrast');
+    else setTheme('dark');
+  };
+
+  // Icon for current theme (shows what clicking will switch TO)
+  const ThemeIcon = () => {
+    if (theme === 'dark') return <Sun className="w-5 h-5" />;
+    if (theme === 'light') return <Moon className="w-5 h-5" />;
+    return <Sun className="w-5 h-5" />;  // contrast → back to dark
+  };
+
+  // Label showing current active theme
+  const themeLabel = theme === 'dark' ? 'Dark' : theme === 'light' ? 'Light' : 'Contrast';
+
   return (
-    <div className={`min-h-screen bg-cyber-bg text-slate-300 font-sans selection:bg-cyber-accent/30 selection:text-white`}>
+    <div className="min-h-screen font-sans selection:bg-cyber-accent/30 selection:text-white">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 glass-panel border-b border-white/5 px-4 md:px-8 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -76,15 +94,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               title="Translate"
             >
               <Type className="w-5 h-5" />
-              <span className="text-[10px] font-display font-bold uppercase tracking-widest">{language === 'en' ? 'English' : 'हिंदी'}</span>
+              <span className="text-[10px] font-display font-bold uppercase tracking-widest">
+                {language === 'en' ? 'English' : 'हिंदी'}
+              </span>
             </button>
 
             {/* Theme Toggle */}
             <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-lg hover:bg-white/5 text-slate-500 hover:text-cyber-accent transition-all"
+              onClick={cycleTheme}
+              className="p-2 rounded-lg hover:bg-white/5 text-slate-500 hover:text-cyber-accent transition-all flex items-center space-x-2"
+              title={`Current: ${themeLabel} — click to cycle`}
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              <ThemeIcon />
+              <span className="hidden lg:block text-[10px] font-display font-bold uppercase tracking-widest">
+                {themeLabel}
+              </span>
             </button>
 
             {/* Profile Dropdown */}

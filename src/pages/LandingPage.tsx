@@ -93,10 +93,9 @@ export default function LandingPage() {
             <div className="glass-panel p-4 border-white/5 relative z-10">
               <div className="absolute inset-0 bg-gradient-to-br from-cyber-accent/20 to-transparent opacity-50"></div>
               <img 
-                src="https://picsum.photos/seed/smartcity/800/600" 
-                alt="Smart City" 
-                className="rounded-xl w-full h-auto grayscale hover:grayscale-0 transition-all duration-700"
-                referrerPolicy="no-referrer"
+                src="https://media.istockphoto.com/id/1303591950/photo/recycle.jpg?s=1024x1024&w=is&k=20&c=xcW6_KpzdlyI9GUSLHChSiwBg-K9DwdFnACvyR9aTEg="
+                alt="Smart waste segregation system with recycling bins for dry and wet waste management"
+                className="rounded-xl w-full h-auto  hover:grayscale-0 transition-all duration-700"
               />
               
               {/* Floating UI Elements */}

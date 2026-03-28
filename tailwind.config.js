@@ -1,4 +1,5 @@
 export default {
+  darkMode: "class",
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -16,5 +17,10 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addVariant }) {
+      addVariant('light', '.light &');
+      addVariant('contrast', '.contrast &');
+    }
+  ],
 };
