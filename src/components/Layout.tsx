@@ -18,7 +18,8 @@ import {
   ChevronDown,
   Shield,
   Home,
-  Contrast
+  Contrast,
+  Users
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -32,28 +33,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const navItems = [
-    { path: '/', label: 'Home', icon: Home },
-    { path: '/user', label: t('nav.user'), icon: Trash2 },
-    { path: '/admin', label: t('nav.admin'), icon: LayoutDashboard, adminOnly: true },
+    { path: '/',           label: 'Home',         icon: Home             },
+    { path: '/user',       label: t('nav.user'),  icon: Trash2           },
+    { path: '/community',  label: 'Community',    icon: Users            },
+    { path: '/admin',      label: t('nav.admin'), icon: LayoutDashboard, adminOnly: true },
   ];
 
   const filteredNav = navItems.filter(item => !item.adminOnly || role === 'admin');
 
-  // Theme cycle: dark → light → contrast → dark
   const cycleTheme = () => {
     if (theme === 'dark') setTheme('light');
     else if (theme === 'light') setTheme('contrast');
     else setTheme('dark');
   };
 
-  // Icon for current theme (shows what clicking will switch TO)
   const ThemeIcon = () => {
     if (theme === 'dark') return <Sun className="w-5 h-5" />;
     if (theme === 'light') return <Moon className="w-5 h-5" />;
-    return <Sun className="w-5 h-5" />;  // contrast → back to dark
+    return <Sun className="w-5 h-5" />;
   };
 
-  // Label showing current active theme
   const themeLabel = theme === 'dark' ? 'Dark' : theme === 'light' ? 'Light' : 'Contrast';
 
   return (
@@ -144,6 +143,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         >
                           <User className="w-4 h-4" />
                           <span className="text-[10px] font-display font-bold uppercase tracking-widest">{t('profile.title')}</span>
+                        </Link>
+                        <Link
+                          to="/community"
+                          onClick={() => setIsProfileOpen(false)}
+                          className="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/5 text-slate-400 hover:text-white transition-all"
+                        >
+                          <Users className="w-4 h-4" />
+                          <span className="text-[10px] font-display font-bold uppercase tracking-widest">Community</span>
                         </Link>
                         {role === 'admin' && (
                           <Link
